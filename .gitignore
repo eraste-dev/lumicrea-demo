@@ -1,0 +1,43 @@
+# Dépendances
+node_modules
+.pnp
+.pnp.js
+
+# Nuxt / Vite / Builds (avec prise en compte de src/)
+.nuxt
+src/.nuxt
+.output
+src/.output
+dist
+src/dist
+.vite
+src/.vite
+.cache
+.temp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Fichiers d'environnement et secrets
+.env
+.env.*
+!.env.example
+
+# Éditeurs de code et IDEs
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db

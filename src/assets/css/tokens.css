@@ -1,0 +1,74 @@
+:root {
+  /* couleurs */
+  --c-scene: #0a0a0a;
+  --c-graphite: #1c1c1c;
+  --c-light: #efefef;
+  --c-white: #ffffff;
+  --c-grey: #5e5e5e;
+  --c-gold: #9b7a1f;
+  --c-line: rgb(28 28 28 / 0.15);
+  --c-line-dark: rgb(255 255 255 / 0.16);
+
+  /* espacements (base 4px) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 40px;
+  --s-6: 64px;
+  --s-7: 104px;
+  --s-8: 168px;
+
+  /* typo */
+  --font: 'Urbanist', system-ui, sans-serif;
+  --fs-small: 0.875rem;
+  --fs-body: 1rem;
+  --fs-lead: 1.25rem;
+  --fs-h2: clamp(1.75rem, 3.5vw, 2.5rem);
+  --fs-h1: clamp(2.5rem, 7vw, 5.5rem);
+
+  --radius: 2px;
+  --container: 1280px;
+  --gutter: 24px;
+
+  /* thème : clair par défaut, sombre via [data-theme='dark'] ou .scope-dark */
+  --bg: var(--c-light);
+  --bg-alt: var(--c-white);
+  --fg: var(--c-graphite);
+  --fg-muted: var(--c-grey);
+  --line: var(--c-line);
+  --focus: var(--c-graphite);
+  --btn-bg: var(--c-graphite);
+  --btn-bg-hover: #000;
+  --btn-fg: var(--c-white);
+  color-scheme: light;
+
+  --header-height: 72px;
+
+  --z-content: 10;
+  --z-header: 20;
+  --z-menu: 30;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 900px) {
+  :root {
+    --gutter: 64px;
+  }
+}
+
+/* mêmes variables en sombre : thème global ou bande sombre isolée */
+[data-theme='dark'],
+.scope-dark {
+  --bg: var(--c-scene);
+  --bg-alt: #141414;
+  --fg: var(--c-light);
+  --fg-muted: #a8a8a8;
+  --line: var(--c-line-dark);
+  --focus: var(--c-gold);
+  --btn-bg: var(--c-light);
+  --btn-bg-hover: var(--c-white);
+  --btn-fg: var(--c-graphite);
+  color-scheme: dark;
+}
