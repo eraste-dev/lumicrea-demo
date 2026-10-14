@@ -1,11 +1,11 @@
 import { BackSide, BoxGeometry, DoubleSide, Mesh, MeshBasicMaterial, PlaneGeometry, Scene } from 'three'
 
 // Environnement de studio pour les reflets : pièce sombre + softboxes lumineuses.
-// Un métal ne reflète que ce qui l'entoure : des sources franches sur un fond sombre
-// donnent des reflets contrastés (brossé, poli, miroir) bien plus convaincants qu'un fond uniforme.
+// Un métal ne reflète que son environnement : des sources franches sur fond sombre
+// donnent de meilleurs reflets qu'un fond uniforme.
 function panel(width: number, height: number, intensity: number, tint: [number, number, number]): Mesh {
   const material = new MeshBasicMaterial({ side: DoubleSide })
-  // intensité > 1 : l'environnement est rendu en flottant (PMREM), la valeur n'est pas écrêtée
+  // > 1 possible : l'environnement est en flottant (PMREM)
   material.color.setRGB(tint[0] * intensity, tint[1] * intensity, tint[2] * intensity)
   return new Mesh(new PlaneGeometry(width, height), material)
 }

@@ -22,14 +22,11 @@ const chapters = [
     <HomeMarquee />
     <HomeStory />
     <HomeFinishes />
-    <HomeNumbers />
     <HomeCollections />
     <HomeFeatured />
     <HomeSituation />
-    <HomeExpertise />
     <HomeConfigurator />
     <HomeProjects />
-    <HomeReviews />
     <HomeShowroom />
     <HomeConclusion />
   </div>

@@ -29,12 +29,12 @@ export function generateOrderNumber(now: Date = new Date()): string {
   return `LC-${date}-${suffix}`
 }
 
-// sessionStorage : la confirmation survit à un rechargement, pas à la fermeture de l'onglet
+// sessionStorage : survit au rechargement, pas à la fermeture de l'onglet
 export function saveLastOrder(order: Order): void {
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(order))
   } catch {
-    // stockage indisponible : la confirmation s'affichera sans recharge possible
+    // pas de stockage : pas de rechargement possible de la confirmation
   }
 }
 

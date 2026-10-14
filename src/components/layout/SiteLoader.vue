@@ -21,7 +21,7 @@ onMounted(async () => {
   const minMs = isReduced ? MIN_MS_REDUCED : MIN_MS
 
   root.style.overflow = 'hidden'
-  // performance.now() = temps écoulé depuis la navigation : l'animation a déjà commencé au premier rendu
+  // performance.now() compte depuis la navigation, l'animation a déjà démarré
   await Promise.all([whenLoaded(), wait(Math.max(0, minMs - performance.now()))])
 
   phase.value = 'leaving'
@@ -33,7 +33,7 @@ onMounted(async () => {
   try {
     sessionStorage.setItem(SEEN_KEY, '1')
   } catch {
-    // stockage indisponible : le loader se rejouera à la prochaine visite, sans conséquence
+    // pas de stockage : le loader se rejouera, tant pis
   }
 })
 </script>

@@ -13,7 +13,7 @@ import {
 
 // État calculé à chaque image, lu par le moteur de rendu.
 export interface InteractionFrame {
-  // 0 → 1 : le pointeur est sur la scène (fondu entre l'ambiance et le contrôle direct)
+  // 0 → 1 selon que le pointeur est sur la scène
   hoverMix: number
   // position du pointeur dans le canvas, de -1 à 1 (y vers le bas)
   localX: number
@@ -26,7 +26,7 @@ export interface InteractionFrame {
 }
 
 // Gère la souris sur le canvas : survol (tour d'intro), glissement pour tourner,
-// clic sur la touche. Ne connaît pas Three.js : le test "est-ce la touche ?" est injecté.
+// clic sur la touche. Pas de Three.js ici, le test "est-ce la touche ?" est injecté.
 export class ProductInteraction {
   private localX = 0
   private localY = 0

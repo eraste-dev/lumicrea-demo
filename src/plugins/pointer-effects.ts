@@ -13,12 +13,9 @@ const cleanups = new WeakMap<HTMLElement, Cleanup>()
 const MAGNETIC_REACH = 36
 const MAGNETIC_MAX_SHIFT = 8
 
-// v-magnetic : l'élément se laisse légèrement attirer par le pointeur.
-// Le décalage passe par la propriété `translate`, donc sans conflit avec `transform`.
-//
-// Deux pièges évités (sinon l'élément "vibre") :
-// - le centre est calculé sans le décalage courant, sinon le bouton se poursuit lui-même ;
-// - on écoute la fenêtre avec une zone fixe, pas le survol du bouton, qui change quand il bouge.
+// v-magnetic : l'élément est légèrement attiré par le pointeur.
+// Le centre est calculé sans le décalage courant et on écoute la fenêtre (zone fixe),
+// sinon le bouton se poursuit lui-même et vibre.
 const magnetic: Directive<HTMLElement, number | undefined> = {
   mounted(el, binding) {
     if (!canUsePointerEffects()) return
@@ -47,8 +44,8 @@ const magnetic: Directive<HTMLElement, number | undefined> = {
         return
       }
 
-      shiftX = Math.max(-MAGNETIC_MAX_SHIFT, Math.min(MAGNETIC_MAX_SHIFT, dx * strength))
-      shiftY = Math.max(-MAGNETIC_MAX_SHIFT, Math.min(MAGNETIC_MAX_SHIFT, dy * strength))
+      shiftX = clamp(dx * strength, -MAGNETIC_MAX_SHIFT, MAGNETIC_MAX_SHIFT)
+      shiftY = clamp(dy * strength, -MAGNETIC_MAX_SHIFT, MAGNETIC_MAX_SHIFT)
       el.style.translate = `${shiftX}px ${shiftY}px`
     }
 

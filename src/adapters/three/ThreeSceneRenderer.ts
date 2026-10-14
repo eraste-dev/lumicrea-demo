@@ -248,7 +248,7 @@ export class ThreeSceneRenderer implements SceneRenderer {
     const frame = this.interaction?.update(performance.now())
     const hover = frame?.hoverMix ?? 0
 
-    // ambiance (pointeur dans toute la fenêtre) → contrôle direct quand on est sur la scène
+    // pointeur sur la fenêtre = ambiance, sur la scène = contrôle direct
     const tiltY = MathUtils.lerp(this.pointer.x * TILT_RANGE, (frame?.localX ?? 0) * HOVER_TILT, hover)
     const tiltX = MathUtils.lerp(this.pointer.y * TILT_RANGE, (frame?.localY ?? 0) * HOVER_TILT, hover)
 

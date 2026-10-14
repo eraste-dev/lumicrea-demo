@@ -3,8 +3,7 @@ import type { WallStyle } from './viewerConfig'
 
 const SIZE = 512
 
-// ── bruit de valeur, déterministe et qui se raccorde sur lui-même (texture répétable) ──
-
+// bruit de valeur, répétable (se raccorde sur lui-même)
 function hash(x: number, y: number, seed: number): number {
   let h = (x * 374761393 + y * 668265263 + seed * 144665) | 0
   h = (h ^ (h >>> 13)) * 1274126177
@@ -58,7 +57,7 @@ function paint(sample: Sampler): HTMLCanvasElement {
   const image = ctx.createImageData(SIZE, SIZE)
   for (let y = 0; y < SIZE; y++) {
     for (let x = 0; x < SIZE; x++) {
-      const value = Math.max(0, Math.min(1, sample(x / SIZE, y / SIZE)))
+      const value = clamp(sample(x / SIZE, y / SIZE), 0, 1)
       const channel = Math.round(value * 255)
       const i = (y * SIZE + x) * 4
       image.data[i] = channel

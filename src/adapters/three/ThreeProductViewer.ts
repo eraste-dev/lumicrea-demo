@@ -290,8 +290,6 @@ export class ThreeProductViewer implements ProductViewer {
     }
   }
 
-  // ── pièce ────────────────────────────────────────────────────────────────
-
   private buildEnvironment() {
     if (!this.renderer) return
     this.pmrem = new PMREMGenerator(this.renderer)
@@ -355,7 +353,7 @@ export class ThreeProductViewer implements ProductViewer {
     this.scene.add(this.wallBack, this.wallFront, this.floor, baseboard, this.buildMirror(), this.buildSconce())
   }
 
-  // ombre de contact : assombrit le mur juste autour de la plaque (occlusion ambiante simulée)
+  // fausse occlusion ambiante autour de la plaque
   private buildContactShadow() {
     const texture = createContactShadowTexture()
     this.extraTextures.push(texture)
@@ -492,15 +490,13 @@ export class ThreeProductViewer implements ProductViewer {
     material.needsUpdate = true
   }
 
-  // ── caméra ───────────────────────────────────────────────────────────────
-
   private unitsPerPixel(): number {
     const height = this.container?.clientHeight || 1
     const distance = this.camera.position.distanceTo(this.look)
     return (2 * distance * Math.tan(MathUtils.degToRad(this.camera.fov / 2))) / height
   }
 
-  // pose cible du plan courant : échelle selon la largeur de la plaque, zoom, déplacement, orbite
+  // pose cible du plan courant
   private computeShot(now: number) {
     const setting = SHOTS[this.shot]
     const width = this.product?.width ?? 1
@@ -531,8 +527,6 @@ export class ThreeProductViewer implements ProductViewer {
     this.look.copy(this.lookTarget)
     this.camera.lookAt(this.look)
   }
-
-  // ── boucle ───────────────────────────────────────────────────────────────
 
   private tick = () => {
     const now = performance.now()

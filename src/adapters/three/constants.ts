@@ -1,7 +1,7 @@
-// plafond du pixel ratio : au-delà, le gain visuel ne vaut pas le coût GPU
+// pixel ratio max (au-delà, trop coûteux pour le GPU)
 export const MAX_PIXEL_RATIO = 2
 
-// amplitude de l'inclinaison au pointeur (radians) et vitesse de rattrapage
+// inclinaison au pointeur (radians) et vitesse de rattrapage
 export const TILT_RANGE = 0.28
 export const TILT_DAMPING = 0.06
 
@@ -12,7 +12,6 @@ export const CAMERA_FAR = 3.2
 export const CAMERA_NEAR = 2.35
 export const CAMERA_DAMPING = 0.08
 
-// vitesse de la transition de couleur entre deux finitions
 export const COLOR_DAMPING = 0.12
 
 // éclairage de jour / de soirée (intensités) et vitesse du fondu entre les deux
@@ -36,7 +35,7 @@ export const SPIN_DURATION = 1400
 export const SPIN_PUSH = 0.35
 export const SPIN_COOLDOWN = 6000
 
-// en dessous de ce déplacement cumulé (px), un appui est un clic et non un glissement
+// sous ce déplacement (px), c'est un clic et non un glissement
 export const CLICK_THRESHOLD = 4
 
 // touche : angle relevée (allumé) / abaissée (éteint), et vitesse de bascule

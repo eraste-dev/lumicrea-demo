@@ -94,7 +94,7 @@ export class ViewerControls {
   private onContextMenu = (event: Event) => event.preventDefault()
 
   private onWheel = (event: WheelEvent) => {
-    // sans capture, la molette fait défiler la page ; Ctrl (ou pincement du pavé tactile) zoome
+    // sans capture, la molette défile la page ; Ctrl ou pincement zoome
     if (!this.hooks.captureWheel && !event.ctrlKey) return
     event.preventDefault()
     this.hooks.onInteract()

@@ -42,7 +42,7 @@ export function useCart() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
     } catch {
-      // stockage indisponible : le panier reste valable pour la session en cours
+      // pas de stockage : le panier ne vit que le temps de la session
     }
   }
 

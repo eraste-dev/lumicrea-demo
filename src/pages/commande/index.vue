@@ -29,7 +29,7 @@ const form = reactive<CheckoutForm>({
 const shipping = computed(() => shippingCents(delivery.value, cart.subtotalCents.value))
 const total = computed(() => cart.subtotalCents.value + shipping.value)
 
-// un panier vide n'a rien à faire ici (après restauration du panier côté navigateur)
+// panier vide : retour (après restauration côté navigateur)
 watch(() => cart.isReady.value, (ready) => {
   if (ready && cart.items.value.length === 0) navigateTo('/configurateur')
 }, { immediate: true })
